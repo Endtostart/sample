@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="helloWorld" class="entityDemo.HelloWorld" scope="singleton">
+        <property name="message" value="hello world"></property>
+    </bean>
+    <bean id="helloWorld2" class="entityDemo.HelloWorld" scope="prototype">
+        <property name="message" value="hello world2"></property>
+    </bean>
+
+    <bean id="beanLife" class="entityDemo.HelloWorld" scope="singleton"
+                init-method="init" destroy-method="destory">
+        <property name="message" value="hello world"></property>
+    </bean>
+    <bean class="spring.ioc.InitHelloWorld"></bean>
+    <bean class="spring.ioc.CStartEventHandler"></bean>
+    <bean class="spring.ioc.CStopEventHandler"></bean>
+
+    <bean id="customEventPublisher" class="spring.ioc.CustomEventPublisher"></bean>
+    <bean id="customEventHandler" class="spring.ioc.CustomEventHandler"></bean>
+</beans>

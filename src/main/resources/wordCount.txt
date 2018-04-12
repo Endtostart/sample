@@ -1,0 +1,4 @@
+This is the example text file for word count example also knows as hello world example of the Hadoop ecosystem.  
+This example is written for the examples article of java code geek  
+The quick brown fox jumps over the lazy dog.  
+The above line is one of the most famous lines which contains all the english language alphabets.
