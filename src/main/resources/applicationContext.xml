@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-    <bean id="helloWorld" class="entityDemo.HelloWorld" scope="singleton">
+       xmlns:myns="http://www.mycompany.com/schema/myns"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.mycompany.com/schema/myns
+       http://www.mycompany.com/schema/myns.xsd">
+    <!--<bean id="helloWorld" class="entityDemo.HelloWorld" scope="singleton">
         <property name="message" value="hello world"></property>
     </bean>
     <bean id="helloWorld2" class="entityDemo.HelloWorld" scope="prototype">
@@ -17,6 +20,16 @@
     <bean class="spring.ioc.CStartEventHandler"></bean>
     <bean class="spring.ioc.CStopEventHandler"></bean>
 
+    <bean id="myBeanDefinitionRegistryPostProcessor"
+    class="spring.ioc.MyBeanDefinitionRegistryPostProcessor"></bean>
+
     <bean id="customEventPublisher" class="spring.ioc.CustomEventPublisher"></bean>
     <bean id="customEventHandler" class="spring.ioc.CustomEventHandler"></bean>
+
+    <bean id="myFactoryBean" class="spring.ioc.beans.MyFactoryBean"></bean>-->
+
+    <bean class="spring.ioc.process.MyNamespaceHandler"></bean>
+    <myns:format-driver init-method="init">
+        <myns:exculde include="service"/>
+    </myns:format-driver>
 </beans>
