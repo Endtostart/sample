@@ -30,17 +30,53 @@ public class Test {
         System.out.println("=================================");
         System.out.println(100.000001f == 100);*/
 
-        Class clazz = Inner.class;
+        /*Class clazz = Inner.class;
         try {
             Method method = clazz.getMethod("fun");
             System.out.println(clazz.equals(method.getDeclaringClass()));
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
-        }
+        }*/
+
+        /*TT tt = new TT();
+        tt.show();*/
+
+        /*System.out.println(Integer.valueOf(127) == Integer.valueOf(127));
+        System.out.println(new Integer(1000).equals(1000));*/
+
+
+        Target.show();
+        Target target = new Target(3);
+        target.show();
+        Target.show();
     }
 
-    public static class Inner implements Serializable{
+    /*public static class Inner implements Serializable{
         public void fun(){}
+    }*/
+}
+/*
+class TT {
+    public static int a = 5;
+
+    public static void show() {
+        System.out.println(a);
+    }
+}*/
+
+class Target {
+    public static int a = 1;
+
+    public static void change(int x) {
+        a = x;
+    }
+
+    public Target(int a) {
+        this.a = a;
+    }
+
+    public static void show() {
+        System.out.println(a);
     }
 }
 
