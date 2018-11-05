@@ -45,10 +45,36 @@ public class Test {
         System.out.println(new Integer(1000).equals(1000));*/
 
 
-        Target.show();
+        /*Target.show();
         Target target = new Target(3);
         target.show();
-        Target.show();
+        Target.show();*/
+
+        String province = "";
+        String city = "";
+        String res = "";
+        String country = "中国";
+        if (province != null && province != "") {
+            res = province;
+        }
+        if (city != null && city != "") {
+            if (res == "") {
+                res = city;
+            } else {
+                res = res + "-" + city;
+            }
+        }
+
+        if (country != null && country != "") {
+            if (res == "") {
+                res = country;
+            } else {
+                res = res + "-" + country;
+            }
+        }
+
+        System.out.println(res);
+
     }
 
     /*public static class Inner implements Serializable{
