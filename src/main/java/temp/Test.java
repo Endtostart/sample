@@ -1,10 +1,14 @@
 package temp;
 
+import com.google.common.primitives.Bytes;
+import entityDemo.Country;
 import org.springframework.mail.MailException;
 
 import javax.sound.midi.Soundbank;
+import javax.swing.text.StyledEditorKit;
 import java.io.Serializable;
 import java.lang.reflect.Method;
+import java.util.Objects;
 
 public class Test {
     public static void main(String[] args) {
@@ -50,31 +54,40 @@ public class Test {
         target.show();
         Target.show();*/
 
-        String province = "";
-        String city = "";
-        String res = "";
-        String country = "中国";
-        if (province != null && province != "") {
-            res = province;
-        }
-        if (city != null && city != "") {
-            if (res == "") {
-                res = city;
-            } else {
-                res = res + "-" + city;
-            }
-        }
 
-        if (country != null && country != "") {
-            if (res == "") {
-                res = country;
-            } else {
-                res = res + "-" + country;
-            }
-        }
+        /*int c = 65538;
+        System.out.println("EXCLUSIVE_MASK : " + EXCLUSIVE_MASK);
+        System.out.println("exclusiveCount : " + exclusiveCount(c));*/
 
-        System.out.println(res);
 
+     /*   Country country = new Country("china", 1300);
+        System.out.println("county : " + country);
+        System.out.println("do" + null);
+        System.out.println(new String() + null);*/
+
+
+       /* Target target = new Target();
+
+        TargetB targetB = new TargetB();
+
+        target.targetB = targetB;
+        targetB.target = target;
+
+        target.sayName();
+        targetB.sayName();
+
+        targetB.target.sayName();
+        target.targetB.sayName();*/
+
+        System.out.println(Target.class.getSimpleName());
+        System.out.println(Target.class.getName());
+
+
+    }
+    static final int SHARED_SHIFT   = 16;
+    static final int EXCLUSIVE_MASK = (1 << SHARED_SHIFT) - 1;
+    public static int exclusiveCount(int c) {
+        return c & EXCLUSIVE_MASK;
     }
 
     /*public static class Inner implements Serializable{
@@ -91,6 +104,11 @@ class TT {
 }*/
 
 class Target {
+
+    TargetB targetB;
+
+    public byte[] bytes;
+
     public static int a = 1;
 
     public static void change(int x) {
@@ -100,10 +118,29 @@ class Target {
     public Target(int a) {
         this.a = a;
     }
+    public Target(){}
 
     public static void show() {
         System.out.println(a);
     }
+
+    public Boolean isEmpty() {
+        return Objects.isNull(bytes) || bytes.length == 0;
+    }
+
+    public void sayName() {
+        System.out.println("target name");
+    }
 }
+
+class TargetB {
+    public Target target;
+
+    public void sayName() {
+        System.out.println("target B name");
+    }
+
+}
+
 
 

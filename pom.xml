@@ -25,6 +25,7 @@
         <log4j2.version>2.5</log4j2.version>
         <mybatis-version>3.2.7</mybatis-version>
         <redis-version>2.9.0</redis-version>
+        <kryo-version>4.0.2</kryo-version>
     </properties>
 
     <dependencies>
@@ -232,6 +233,21 @@
             <version>2.9.5</version>
         </dependency>
         <!-- jackson 连接客户端 end -->
+
+        <!-- kryo 序列化工具 begain -->
+        <!--<dependency>
+            <groupId>com.esotericsoftware</groupId>
+            <artifactId>kryo</artifactId>
+            <version>${kryo-version}</version>
+        </dependency>-->
+
+        <dependency>
+            <groupId>com.esotericsoftware</groupId>
+            <artifactId>kryo-shaded</artifactId>
+            <version>${kryo-version}</version>
+        </dependency>
+
+        <!-- kryo 序列化工具 end -->
 
 
     </dependencies>
