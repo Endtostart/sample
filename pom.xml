@@ -3,10 +3,16 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>sample</groupId>
     <artifactId>sample</artifactId>
     <version>1.0-SNAPSHOT</version>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.0.3.RELEASE</version>
+    </parent>
+
     <build>
         <plugins>
             <plugin>
@@ -62,8 +68,28 @@
             <version>5.1.6</version>
         </dependency>
 
-        <!-- spring=== start -->
+        <!-- spring boot start -->
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!-- spring boot end   -->
+
+        <!-- spring=== start -->
+  <!--      <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-aop</artifactId>
             <version>${spring-version}</version>
@@ -143,7 +169,7 @@
             <artifactId>spring-test</artifactId>
             <version>${spring-version}</version>
             <scope>test</scope>
-        </dependency>
+        </dependency>-->
         <!-- spring=== end -->
 
         <!-- apache Commons == begain-->
@@ -208,13 +234,13 @@
         </dependency>
         <!-- mybatis end-->
 
-        <!-- redis 连接客户端 begain -->
+        <!-- jedis 连接客户端 begain -->
         <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
             <version>${redis-version}</version>
         </dependency>
-        <!-- redis 连接客户端 end -->
+        <!-- jedis 连接客户端 end -->
 
         <!-- jackson 连接客户端 begain -->
         <dependency>

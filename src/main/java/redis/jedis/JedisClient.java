@@ -1,4 +1,4 @@
-package jedis;
+package redis.jedis;
 
 import redis.clients.jedis.Jedis;
 
@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class JedisClient {
     public static void main(String[] args) {
-        Jedis jedis = new Jedis("172.17.0.2",6379);
+        Jedis jedis = new Jedis("172.17.3.223",6379);
         jedis.auth("654321");
         String name = jedis.get("name");
         System.out.println(name);

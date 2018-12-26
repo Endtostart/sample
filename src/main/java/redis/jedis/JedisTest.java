@@ -1,4 +1,4 @@
-package jedis;
+package redis.jedis;
 
 import common.utils.JedisPoolClient;
 import redis.clients.jedis.Jedis;

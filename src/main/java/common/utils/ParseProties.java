@@ -7,8 +7,8 @@ import java.io.InputStream;
 import java.util.Properties;
 
 public class ParseProties implements ParseFile {
-    //private String default_path = "application.properties";
-    private String default_path = "/home/trojan/workspace/sample/src/main/resources/application.properties";
+    //private String default_path = "custom.properties";
+    private String default_path = "D:\\home\\src\\sample\\src\\main\\resources\\custom.properties";
     public ParseProties(){}
     public  ParseProties(String path){
         default_path = path;

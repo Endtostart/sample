@@ -1,6 +1,8 @@
 package socket.nio;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
@@ -25,6 +27,8 @@ public class NioClient {
         socketChannel.configureBlocking(false);
         Selector selector = Selector.open();
         socketChannel.register(selector, SelectionKey.OP_CONNECT|SelectionKey.OP_WRITE|SelectionKey.OP_READ);
+
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
         while (true) {
             selector.select();
@@ -52,11 +56,12 @@ public class NioClient {
                 } else if (key.isReadable()) {
                     recv.clear();
                     channel.read(recv);
-                    System.out.println("Mesg from server:" + new String(recv.array()));
+                    System.out.println("Server:" + new String(recv.array()));
                     key.interestOps(SelectionKey.OP_WRITE);
                 } else if (key.isWritable()) {
                     recv.clear();
-                    String mesg = "Mesg from client "+ Math.random()*100;
+                    //String mesg = "Mesg from client "+ Math.random()*100;
+                    String mesg = reader.readLine();
                     recv.put(mesg.getBytes());
                     recv.flip();
                     channel.write(recv);

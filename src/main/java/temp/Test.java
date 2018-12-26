@@ -1,6 +1,7 @@
 package temp;
 
 import com.google.common.primitives.Bytes;
+import com.sun.xml.internal.ws.encoding.MtomCodec;
 import entityDemo.Country;
 import org.springframework.mail.MailException;
 
@@ -8,6 +9,11 @@ import javax.sound.midi.Soundbank;
 import javax.swing.text.StyledEditorKit;
 import java.io.Serializable;
 import java.lang.reflect.Method;
+import java.lang.reflect.Type;
+import java.lang.reflect.TypeVariable;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 public class Test {
@@ -79,11 +85,60 @@ public class Test {
         targetB.target.sayName();
         target.targetB.sayName();*/
 
-        System.out.println(Target.class.getSimpleName());
-        System.out.println(Target.class.getName());
+        /*System.out.println(Target.class.getSimpleName());
+        System.out.println(Target.class.getName());*/
+/*
+        TargetB targetB = new TargetB();
+        System.out.println(targetB instanceof Target);
+        System.out.println(targetB instanceof C);*/
+
+        /*Method method = null;
+        try {
+            method = Target.class.getMethod("test", new Class[]{Integer.class, String.class, List.class});
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        }
+        Type[] types = method.getParameterTypes();
+        TypeVariable<Method>[] types1 = method.getTypeParameters();
+
+        System.out.println(types.length == types1.length);*/
+
+       /* Test test = new Test();
+        Target target = new Target();
+        target.name = "name1";
+        System.out.println(target.name);
+        System.out.println("= = = = = = = = = = = = = = = = = = = =");
+
+        test.warpData(target);
+        System.out.println(target.name);*/
+
+        List<String> abc = new ArrayList<>();
+        /*abc.add("hello");
+        abc.add("world");
+        String ss = abc.toString();
+        System.out.println(ss);*/
+
+
+        /*String str = "hello,world";
+        String bb[] = str.split(",");
+        abc = Arrays.asList(bb);
+        System.out.println(abc.toString());*/
+
+        String ss = "[abc],[dd]";
+        ss  = ss.replaceAll("(\\[|\\])", "");
+        System.out.println(ss);
+
 
 
     }
+
+    public static void warpData(Target target) {
+        target = new Target();
+        target.name = "target change";
+
+    }
+
+
     static final int SHARED_SHIFT   = 16;
     static final int EXCLUSIVE_MASK = (1 << SHARED_SHIFT) - 1;
     public static int exclusiveCount(int c) {
@@ -111,6 +166,8 @@ class Target {
 
     public static int a = 1;
 
+    public String name;
+
     public static void change(int x) {
         a = x;
     }
@@ -131,9 +188,10 @@ class Target {
     public void sayName() {
         System.out.println("target name");
     }
+
 }
 
-class TargetB {
+class TargetB extends Target implements C{
     public Target target;
 
     public void sayName() {
@@ -141,6 +199,8 @@ class TargetB {
     }
 
 }
+
+interface C {}
 
 
 

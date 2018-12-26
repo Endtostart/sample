@@ -68,10 +68,10 @@ public class NioServer {
             key.interestOps(SelectionKey.OP_WRITE);
         } else if (key.isWritable()) {
             client = (SocketChannel) key.channel();
-            send.clear();
+           /* send.clear();
             String mesg = "Hello client";
             send.put(mesg.getBytes());
-            send.flip();
+            send.flip();*/
             client.write(send);
             key.interestOps(SelectionKey.OP_READ);
         }
