@@ -1,8 +1,10 @@
 package temp;
 
 import com.google.common.primitives.Bytes;
+import com.sun.tools.internal.ws.wsdl.document.soap.SOAPUse;
 import com.sun.xml.internal.ws.encoding.MtomCodec;
 import entityDemo.Country;
+import entityDemo.Person;
 import org.springframework.mail.MailException;
 
 import javax.sound.midi.Soundbank;
@@ -11,10 +13,12 @@ import java.io.Serializable;
 import java.lang.reflect.Method;
 import java.lang.reflect.Type;
 import java.lang.reflect.TypeVariable;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Test {
     public static void main(String[] args) {
@@ -112,7 +116,7 @@ public class Test {
         test.warpData(target);
         System.out.println(target.name);*/
 
-        List<String> abc = new ArrayList<>();
+        //List<String> abc = new ArrayList<>();
         /*abc.add("hello");
         abc.add("world");
         String ss = abc.toString();
@@ -124,12 +128,38 @@ public class Test {
         abc = Arrays.asList(bb);
         System.out.println(abc.toString());*/
 
-        String ss = "[abc],[dd]";
+       /* String ss = "[abc],[dd]";
         ss  = ss.replaceAll("(\\[|\\])", "");
-        System.out.println(ss);
+        System.out.println(ss);*/
 
+        /*List<Person> people = new ArrayList<>();
+        Person person1 = new Person();
+        person1.setName("p1");
+        Person person2 = new Person();
+        person2.setName("p2");
 
+        people.add(person1);
+        people.add(person2);
+        System.out.println(people.get(0).getName()+"==" +people.get(1).getName());
+        people = people.stream().map(e -> {
+            e.setName("hello");
+            return e;
+        }).collect(Collectors.toList());
+        System.out.println(people.get(0).getName()+"==" +people.get(1).getName());*/
+        //System.out.println(Integer.valueOf("3000000003"));
 
+       /* List<Integer> list = Arrays.asList(1, 2, 3, 4, 5);
+        System.out.println(list);
+        List<String> stringList = list.stream().filter(e -> e > 4).map(e -> e.toString()).collect(Collectors.toList());
+        System.out.println(stringList);*/
+
+        /*String url = "http://zclass.zhan.com/index.html?token=3900623543CA075ABF1EDE6DE4064A7D&class_id=3301&class_type=0&lesson_id=1&live=0";
+        String newUrl = url.replaceAll("&class_id=([0-9]*)&", "&class_id="+1100+"&");
+        System.out.println(url);
+        System.out.println(newUrl);*/
+        Integer a = 1;
+        System.out.println(Integer.valueOf(1).equals(a));
+        System.out.println(a.equals(1));
     }
 
     public static void warpData(Target target) {
