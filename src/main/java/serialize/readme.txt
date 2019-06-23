@@ -15,3 +15,11 @@
     相关工具： jackson，fastjson，gjson
   2.2 字节码序列化
     Kryo
+3. json 包中
+    Gson,Jackson序列化反序列化
+    通过一个统一标准 JsonSelf,和一个标准化的类型TypeTab
+    实现了两种序列化的标准化,无需关心具体序列化的供应商是gson还是jackson
+    ps：只涉及
+    3.1 泛型序列化反序列化
+    3.2 反序列化为map
+    3.3 复杂对象嵌套序列化反序列化
