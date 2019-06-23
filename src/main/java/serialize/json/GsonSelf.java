@@ -2,8 +2,6 @@ package serialize.json;
 
 import com.google.gson.Gson;
 
-import java.io.IOException;
-
 public class GsonSelf implements JsonSelf{
 
     private Gson gson;

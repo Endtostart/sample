@@ -1,18 +1,9 @@
 package serialize.json;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.Gson;
 import entityDemo.Message;
 import entityDemo.Person;
-import serialize.json.GsonSelf;
-import serialize.json.JacksonSelf;
-import serialize.json.JsonSelf;
-import serialize.json.TypeTab;
-
 import java.io.IOException;
-import java.lang.reflect.Type;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -24,8 +15,6 @@ public class JsonSerializeDemo {
 
     static JsonSelf jsonSelf = new JacksonSelf(new ObjectMapper());
     //static JsonSelf jsonSelf = new GsonSelf(new Gson());
-
-
 
     public static void main(String[] args) throws IOException {
 
@@ -127,8 +116,6 @@ public class JsonSerializeDemo {
             this.child = child;
         }
     }
-
-
 
 }
 
