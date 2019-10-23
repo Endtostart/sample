@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.dao.ShijingMapper">
+    <insert id="insertObj" parameterType="mybatis.entity.Shijing">
+        insert into shijing (title,chapter,section,content) values (#{title},#{chapter},#{section},#{content})
+    </insert>
+</mapper>

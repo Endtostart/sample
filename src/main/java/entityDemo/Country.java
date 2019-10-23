@@ -9,6 +9,7 @@ public class Country {
 
     String name;
     Integer populatioin;
+    StatusEnum status;
 
     public Country(){
 
@@ -51,5 +52,13 @@ public class Country {
             return true;
         }
         return false;
+    }
+
+    public StatusEnum getStatus() {
+        return status;
+    }
+
+    public void setStatus(StatusEnum status) {
+        this.status = status;
     }
 }

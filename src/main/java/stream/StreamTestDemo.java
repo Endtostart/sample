@@ -1,8 +1,10 @@
 package stream;
 
+import com.google.common.base.Joiner;
 import com.google.common.collect.Lists;
 import entityDemo.Country;
 
+import javax.swing.text.html.Option;
 import java.util.*;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
@@ -62,6 +64,15 @@ public class StreamTestDemo {
         System.out.println("after change:" + afterList.toString());
     }
 
+    public static void peek2() {
+        IntStream.range(1, 10)
+                .peek(x -> System.out.print("A" + x)).forEach(x -> System.out.println("C" + x));
+                //.limit(3);
+//                .peek(x -> System.out.println("B" + x))
+//                .forEach(x -> System.out.println("C" + x));
+
+    }
+
     /**
      * 组合处理
      */
@@ -81,6 +92,14 @@ public class StreamTestDemo {
                 .peek(m -> System.out.println(m))
                 .reduce(Integer::sum).get();
         System.out.println("after reduce, sum of nums : " + sum);
+    }
+
+    public static void sumReduce() {
+        System.out.println("================ collect str length sum ===============");
+        List<String> strs = Stream.of("i", "love", "you", "too").collect(Collectors.toList());
+        System.out.println("input Strings : " + strs);
+        Integer strLength = strs.stream().reduce(0, (sum, str) -> sum + str.length(), (a, b) -> a + b);
+        System.out.println("strs length: " + strLength);
     }
 
     /**
@@ -173,14 +192,46 @@ public class StreamTestDemo {
         Stream.iterate(0, n -> n + 3).limit(10).forEach(System.out::println);
     }
 
+    /**
+     * 字符串 jion
+     */
+    public static void join() {
+        List<String> list = new ArrayList<>(Arrays.asList("i", "love", "you"));
+        System.out.println("list:" + list);
+        System.out.println("============== after join =============");
+        String afterJoin = list.stream().collect(Collectors.joining(";"));
+        System.out.println(afterJoin);
+        System.out.println("========= join { } and ,");
+        String afterJoin2 = list.stream().collect(Collectors.joining(";", "{", "}"));
+        System.out.println(afterJoin2);
+    }
+
+    /**
+     * 并行化
+     */
+    public static void parallel() {
+        IntStream list = IntStream.range(1, 10);
+        Set<Thread> threads = new HashSet<>();
+        list.parallel().forEach(e->{
+            Thread t = Thread.currentThread();
+            System.out.println(t.getName() + " : running");
+            threads.add(t);
+        });
+        System.out.println("all threads：" + Joiner.on("，").join(threads.stream().map(Thread::getName).collect(Collectors.toList())));
+    }
+
     public static void main(String[] args) {
-        map();
-        flatMap();
-        peek();
-        reduce();
-        limitAndSkip();
-        match();
-        generate();
-        iterate();
+//        map();
+//        flatMap();
+//        peek();
+//        peek2();
+//        reduce();
+//        limitAndSkip();
+//        match();
+//        generate();
+//        iterate();
+//        sumReduce();
+//        join();
+          parallel();
     }
 }

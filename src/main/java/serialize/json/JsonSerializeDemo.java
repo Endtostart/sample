@@ -3,6 +3,8 @@ package serialize.json;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import entityDemo.Message;
 import entityDemo.Person;
+import entityDemo.StatusEnum;
+
 import java.io.IOException;
 import java.text.MessageFormat;
 import java.util.ArrayList;
@@ -53,6 +55,12 @@ public class JsonSerializeDemo {
         String homeJson= genericSerialize(home);
         // 反序列化
         generacDeserilizeDeepObject(homeJson);
+
+        System.out.println("================ 枚举 ==============");
+        StatusEnum status = StatusEnum.OK;
+        String enumJson = genericSerialize(status);
+        StatusEnum newStatus = generacDeserilize(enumJson, new TypeTab<StatusEnum>() {});
+        System.out.println("OK".equals(newStatus.name()));
 
     }
 

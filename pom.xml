@@ -178,6 +178,11 @@
             <artifactId>commons-dbcp</artifactId>
             <version>1.4</version>
         </dependency>
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>1.9.3</version>
+        </dependency>
         <!-- apache Commons == end-->
 
         <!-- Sql driver == begain -->
@@ -280,6 +285,43 @@
             <artifactId>kryo-shaded</artifactId>
             <version>${kryo-version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.aliyun</groupId>
+            <artifactId>aliyun-java-sdk-core</artifactId>
+            <version>4.1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.aliyun.mns</groupId>
+            <artifactId>aliyun-sdk-mns</artifactId>
+            <version>1.1.8</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.aliyun</groupId>
+            <artifactId>aliyun-java-sdk-dysmsapi</artifactId>
+            <version>1.1.0</version>
+        </dependency>
+
+        <!--<dependency>-->
+        <!--<groupId>com.aliyun.mns</groupId>-->
+        <!--<artifactId>aliyun-sdk-mns</artifactId>-->
+        <!--<version>1.1.8</version>-->
+        <!--</dependency>-->
+
+        <dependency>
+            <groupId>com.aliyun</groupId>
+            <artifactId>mns-receive-sdk</artifactId>
+            <version>1.0.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.aliyun</groupId>
+            <artifactId>aliyun-java-sdk-dyvmsapi</artifactId>
+            <version>1.2.2</version>
+        </dependency>
+
 
         <!-- kryo 序列化工具 end -->
 

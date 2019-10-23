@@ -1,27 +1,32 @@
 package temp;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.primitives.Bytes;
+import com.google.gson.Gson;
 import com.sun.tools.internal.ws.wsdl.document.soap.SOAPUse;
 import com.sun.xml.internal.ws.encoding.MtomCodec;
 import entityDemo.Country;
 import entityDemo.Person;
 import org.springframework.mail.MailException;
+import org.springframework.util.CollectionUtils;
+import org.springframework.util.StringUtils;
 
 import javax.sound.midi.Soundbank;
 import javax.swing.text.StyledEditorKit;
+import java.io.IOException;
 import java.io.Serializable;
 import java.lang.reflect.Method;
 import java.lang.reflect.Type;
 import java.lang.reflect.TypeVariable;
 import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Test {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         /*String a = "a";
         String b = "b";
         String ab = a+b;
@@ -157,14 +162,119 @@ public class Test {
         String newUrl = url.replaceAll("&class_id=([0-9]*)&", "&class_id="+1100+"&");
         System.out.println(url);
         System.out.println(newUrl);*/
-        Integer a = 1;
+        /*Integer a = 1;
         System.out.println(Integer.valueOf(1).equals(a));
-        System.out.println(a.equals(1));
+        System.out.println(a.equals(1));*/
+//        Pattern pattern = Pattern.compile("^(intent:#Intent;).*(;end)$");
+//        String s = "intent:#Intent;action=android.intent.action.oppopush;package=com.zhan.toefltom;component=com.zhan.toefltom/com.zhan.toefltom.WebviewActivity;S.getuiUrl={http://top.zhan.com/kechengzhan/activity/detail.html?activity_id=278&aid=\t};end";
+//        boolean bool = pattern.matcher(s).find();
+//        System.out.println(bool);
+
+
+//        String ss = "{\"price\":\"99\",\"wechat\":\"ajsccc\",\"step\":\"请关注小站公众号领取,回复：雅思预测机经\",\"detail\":\"雅思预测机经资料描述\"}";
+//        System.out.println(ss);
+//        Gson gson = new Gson();
+//       Map<String,Object> map = gson.fromJson(ss, Map.class);
+//        System.out.println(map.get("price"));
+        /*Integer integer = new Integer(8897);
+        System.out.println(Integer.valueOf(8897).equals(null));
+
+        String[] ss = "hello;world".split(";");
+        System.out.println(ss.toString());
+        System.out.println(Arrays.asList(ss));*/
+
+//        Map<Integer, Map<String, String>> map = new HashMap<>();
+//        map.put(1, new HashMap<String, String>() {{
+//            put("name", "ning");
+//            put("name2", "bye");
+//        }});
+//
+//        Map<String, String> innerMap = map.get(1);
+//        System.out.println(innerMap.get("name"));
+//
+//        List<Integer> list = new ArrayList<Integer>() {{
+//            add(1);
+//            add(2);
+//        }};
+//        System.out.println(list.toString());
+//
+//        Map<String, Double> res = new HashMap<>();
+//        res.put("status", Double.valueOf("1"));
+//        //String json = new ObjectMapper().writeValueAsString(res);
+//        String json = "{\"status\":1}";
+//        System.out.println(json);
+//        //Map<String, Integer> res2 = new ObjectMapper().readValue(json, Map.class); // jackson
+//        Map<String, Integer> res2 = new Gson().fromJson(json, Map.class);
+//        System.out.println(res2.get("status"));
+
+
+//        Object a = new Integer(1);
+//        System.out.println((String)a);
+
+
+//        String content = "你好{{name}},你的验证码{{code}}";
+//        String pattern = "\\{\\{([^}]*)}}";
+//        //String pattern = "\\{+([^}]*)}";
+//        String params = extractParam(content, pattern);
+//
+//        System.out.println(params);
+
+
+//        Target target = new Target();
+//
+//        for (int i = 0; i < 10; i++) {
+//            Thread t = new Thread(() -> {
+//                target.doSomething();
+//            });
+//            t.start();
+//        }
+
+//        Map<String, Object> map = new HashMap<>();
+//        String ss = (String) map.get("temp");
+//        System.out.println(Objects.isNull(ss));
+        int READ = 1 << 0;
+        int WRITE = 1 << 2;
+        int COMPLATE = 1 << 3;
+
+        System.out.println(Integer.toBinaryString(READ ^ 15));
+        System.out.println(Integer.toBinaryString(WRITE));
+        System.out.println(Integer.toBinaryString(COMPLATE));
+        System.out.println(Integer.toBinaryString((1 << 4)));
+
+
+
+
+
+
+
+
     }
+
+
+
+
+
+    /**
+     * 提取文本中替换参数
+     */
+    static String extractParam(String content, String pattern) {
+        Pattern compile = Pattern.compile(pattern);
+        Matcher matcher = compile.matcher(content);
+        String params = "";
+        while (matcher.find()) {
+            params = params + matcher.group(1) + ",";
+
+        }
+        if (!StringUtils.isEmpty(params)) {
+            params = params.substring(0, params.length() - 1);
+        }
+
+        return params;
+    }
+
 
     public static void warpData(Target target) {
         target = new Target();
-        target.name = "target change";
 
     }
 
@@ -190,47 +300,19 @@ class TT {
 
 class Target {
 
-    TargetB targetB;
+    private volatile boolean isRunning = false;
 
-    public byte[] bytes;
-
-    public static int a = 1;
-
-    public String name;
-
-    public static void change(int x) {
-        a = x;
-    }
-
-    public Target(int a) {
-        this.a = a;
-    }
-    public Target(){}
-
-    public static void show() {
-        System.out.println(a);
-    }
-
-    public Boolean isEmpty() {
-        return Objects.isNull(bytes) || bytes.length == 0;
-    }
-
-    public void sayName() {
-        System.out.println("target name");
+    public void doSomething() {
+        if (!isRunning) {
+            System.out.println(Thread.currentThread().getName() + ": doSomting");
+            isRunning = true;
+        }
     }
 
 }
 
-class TargetB extends Target implements C{
-    public Target target;
 
-    public void sayName() {
-        System.out.println("target B name");
-    }
 
-}
-
-interface C {}
 
 
 

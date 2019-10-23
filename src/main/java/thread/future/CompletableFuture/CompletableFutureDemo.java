@@ -1,7 +1,4 @@
-package future.CompletableFuture;
-
-import common.utils.StringUtil;
-import jdk.nashorn.internal.runtime.linker.LinkerCallSite;
+package thread.future.CompletableFuture;
 
 import java.util.Arrays;
 import java.util.Date;
@@ -183,8 +180,8 @@ public class CompletableFutureDemo {
         //demo.thenAcceptAsyncExample();
         //demo.thenCombineAsyncExample();
         //demo.thenCombineExample();
-        demo.anyOfExample();
-        //demo.allOfExample();
+        //demo.anyOfExample();
+        demo.allOfExample();
         //demo.allofAsyncExample();
     }
 }

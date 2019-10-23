@@ -3,7 +3,7 @@ package thread.test;
 import java.util.concurrent.TimeUnit;
 
 public class DaemonTest {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         System.out.println("main begain");
         Thread thread = new Thread(()->{
             int count = 0;

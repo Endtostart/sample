@@ -1,4 +1,4 @@
-package future;
+package thread.future;
 
 import com.google.common.collect.Lists;
 
