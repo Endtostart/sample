@@ -28,7 +28,7 @@
     <properties>
         <spring-version>4.2.6.RELEASE</spring-version>
         <sqlserver.jdbc4>4.0</sqlserver.jdbc4>
-        <log4j2.version>2.5</log4j2.version>
+        <log4j2.version>2.13.3</log4j2.version>
         <mybatis-version>3.2.7</mybatis-version>
         <redis-version>2.9.0</redis-version>
         <kryo-version>4.0.2</kryo-version>
